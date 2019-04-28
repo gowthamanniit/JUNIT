@@ -1,0 +1,67 @@
+========================================================normal java (packagename right click -->new--> classs)==============
+
+package testing;
+
+public class JunitTesting {
+	public int square(int x) {
+		return (x*x);
+	}
+	public int countA(String word) {
+		int count=0;
+		for(int i=0;i<word.length();i++)
+		{
+			if(word.charAt(i)=='A' || word.charAt(i)=='a')
+				count++;
+		}
+		return count;
+	}
+}
+--------------------------------------------------------------------------------
+============================package name right click --> new --> junit test case --> file name --> finish --> type the code ========
+package testing;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class SquareTest {
+
+	@Test
+	public void test() {
+		JunitTesting te=new JunitTesting();
+		int ans=te.square(5);
+		int expectedoutput=25;
+		assertEquals(expectedoutput, ans);		
+	}
+
+}
+---------------------------------------------------------------------------------
+package testing;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class countATesting {
+
+	@Test
+	public void test() {
+		JunitTesting s1=new JunitTesting();
+		int ans=s1.countA("gowthAman");
+		assertEquals(2,ans);
+	}
+
+}
+------------------------------------------------------------------------------
+package testing;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
+
+@RunWith(Suite.class)
+@SuiteClasses({ countATesting.class, SquareTest.class })
+public class AllTests {
+  
+}
+-----------------------------------------------------------------------------
